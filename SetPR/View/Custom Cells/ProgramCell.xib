@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="131" id="KGk-i7-Jjw" customClass="ProgramCell" customModule="SetPR" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="131"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="323" height="130.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sr0-Xv-dVM">
+                        <rect key="frame" x="10" y="5" width="65" height="35"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20N-rg-HBZ">
+                                <rect key="frame" x="0.0" y="0.0" width="45" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="KHw-cr-g7J"/>
+                                    <constraint firstAttribute="width" constant="45" id="rbo-7X-XLW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P23-rQ-WHB">
+                                <rect key="frame" x="45" y="0.0" width="20" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="2rP-oc-bIB"/>
+                                    <constraint firstAttribute="height" constant="35" id="Ps9-R7-Vgf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L2r-yz-ZK8">
+                        <rect key="frame" x="142" y="5" width="171" height="35"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI2-p8-GTO">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Rt2-Pj-MLg"/>
+                                    <constraint firstAttribute="height" constant="35" id="UUb-D6-Wqw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mm/dd/yyyy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="267-Wq-8Re">
+                                <rect key="frame" x="50" y="0.0" width="121" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="dBm-Ik-QNi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Cj4-wm-ZVG">
+                        <rect key="frame" x="11.5" y="45" width="300" height="80"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H50-Bg-eip">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="jDi-mc-ooC"/>
+                                    <constraint firstAttribute="width" constant="80" id="juO-Mm-0NR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
+                                <state key="normal" title="Workout">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvO-hL-mJR">
+                                <rect key="frame" x="110" y="0.0" width="80" height="80"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
+                                <state key="normal" title="Nutrition">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4U-3E-d4R">
+                                <rect key="frame" x="220" y="0.0" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
+                                <state key="normal" title="Sleep">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="9YB-8F-zF7"/>
+                            <constraint firstItem="N4U-3E-d4R" firstAttribute="width" secondItem="H50-Bg-eip" secondAttribute="width" id="AGU-wK-Jtg"/>
+                            <constraint firstItem="OvO-hL-mJR" firstAttribute="height" secondItem="H50-Bg-eip" secondAttribute="height" id="Fdr-yt-HdJ"/>
+                            <constraint firstItem="OvO-hL-mJR" firstAttribute="width" secondItem="H50-Bg-eip" secondAttribute="width" id="U90-im-fmc"/>
+                            <constraint firstItem="N4U-3E-d4R" firstAttribute="height" secondItem="H50-Bg-eip" secondAttribute="height" id="rBr-6c-S6K"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Sr0-Xv-dVM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="0cc-K7-eji"/>
+                    <constraint firstItem="Cj4-wm-ZVG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1or-t0-3m4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Cj4-wm-ZVG" secondAttribute="bottom" constant="5" id="7f7-Wp-p9y"/>
+                    <constraint firstItem="Cj4-wm-ZVG" firstAttribute="top" secondItem="L2r-yz-ZK8" secondAttribute="bottom" constant="5" id="7gq-E4-1wJ"/>
+                    <constraint firstItem="Sr0-Xv-dVM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Bnv-Ow-FNe"/>
+                    <constraint firstItem="Cj4-wm-ZVG" firstAttribute="top" secondItem="Sr0-Xv-dVM" secondAttribute="bottom" constant="5" id="Nd1-ak-4gO"/>
+                    <constraint firstAttribute="trailing" secondItem="L2r-yz-ZK8" secondAttribute="trailing" constant="10" id="sa8-bA-oY5"/>
+                    <constraint firstItem="L2r-yz-ZK8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="wEQ-F5-JsY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="267-Wq-8Re" id="qqE-YX-1fd"/>
+                <outlet property="dayLabel" destination="P23-rQ-WHB" id="DCt-ct-ht7"/>
+                <outlet property="nutritionButton" destination="OvO-hL-mJR" id="Azc-0o-pdJ"/>
+                <outlet property="sleepButton" destination="N4U-3E-d4R" id="YXz-KI-00V"/>
+                <outlet property="workoutButton" destination="H50-Bg-eip" id="xaA-Av-029"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="158.77061469265368"/>
+        </tableViewCell>
+    </objects>
+</document>

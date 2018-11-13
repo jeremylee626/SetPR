@@ -7,21 +7,73 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D23E016C5B62FBCAE01DF142 /* Pods_SetPR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F34279A1ADD92A9116603FE /* Pods_SetPR.framework */; };
 		D903C721219271230034C273 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D903C720219271230034C273 /* AppDelegate.swift */; };
-		D903C723219271230034C273 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D903C722219271230034C273 /* ViewController.swift */; };
+		D903C723219271230034C273 /* ExerciseBankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D903C722219271230034C273 /* ExerciseBankVC.swift */; };
 		D903C726219271230034C273 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D903C724219271230034C273 /* Main.storyboard */; };
 		D903C728219271230034C273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D903C727219271230034C273 /* Assets.xcassets */; };
 		D903C72B219271230034C273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D903C729219271230034C273 /* LaunchScreen.storyboard */; };
+		D9274301219A31E0005B2181 /* ProgramOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274300219A31E0005B2181 /* ProgramOverviewVC.swift */; };
+		D9274303219A33BA005B2181 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274302219A33BA005B2181 /* User.swift */; };
+		D9274305219A3737005B2181 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274304219A3737005B2181 /* Meal.swift */; };
+		D9274307219A3843005B2181 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274306219A3843005B2181 /* Food.swift */; };
+		D9274309219A399D005B2181 /* SleepPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274308219A399D005B2181 /* SleepPlan.swift */; };
+		D927430C219A3CE3005B2181 /* ProgramOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D927430A219A3CE3005B2181 /* ProgramOverviewCell.swift */; };
+		D927430D219A3CE3005B2181 /* ProgramOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D927430B219A3CE3005B2181 /* ProgramOverviewCell.xib */; };
+		D927430F219B57EC005B2181 /* ProgramDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D927430E219B57EC005B2181 /* ProgramDay.swift */; };
+		D93D685D219273EB00BF9BE5 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D685C219273EB00BF9BE5 /* Exercise.swift */; };
+		D93D685F219275A200BF9BE5 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D685E219275A200BF9BE5 /* ExerciseSet.swift */; };
+		D93D6863219278F100BF9BE5 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D6862219278F100BF9BE5 /* Workout.swift */; };
+		D93D6865219278FD00BF9BE5 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D6864219278FD00BF9BE5 /* Program.swift */; };
+		D93D686721927C9F00BF9BE5 /* CardioSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D686621927C9F00BF9BE5 /* CardioSet.swift */; };
+		D9B108D62197040700AEDC23 /* SelectedProgramVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B108D52197040700AEDC23 /* SelectedProgramVC.swift */; };
+		D9C16F4E2196448300E2ED0D /* WorkoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C16F4D2196448300E2ED0D /* WorkoutVC.swift */; };
+		D9C16F5521966CE500E2ED0D /* WorkoutExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C16F5321966CE500E2ED0D /* WorkoutExerciseCell.swift */; };
+		D9C16F5621966CE500E2ED0D /* WorkoutExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */; };
+		D9C16F592196FEC300E2ED0D /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C16F572196FEC300E2ED0D /* ProgramCell.swift */; };
+		D9C16F5A2196FEC300E2ED0D /* ProgramCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C16F582196FEC300E2ED0D /* ProgramCell.xib */; };
+		D9FB31E1219370AD00ADAC82 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB31DF219370AD00ADAC82 /* ExerciseCell.swift */; };
+		D9FB31E2219370AD00ADAC82 /* ExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB31E0219370AD00ADAC82 /* ExerciseCell.xib */; };
+		D9FB31E52193737300ADAC82 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB31E32193737300ADAC82 /* AddCell.swift */; };
+		D9FB31E62193737300ADAC82 /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB31E42193737300ADAC82 /* AddCell.xib */; };
+		D9FB31EC21946B2B00ADAC82 /* NewExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB31EB21946B2B00ADAC82 /* NewExerciseVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B6FD11108894621569C9938 /* Pods-SetPR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SetPR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SetPR/Pods-SetPR.debug.xcconfig"; sourceTree = "<group>"; };
+		9235B7002206BDB595B835B7 /* Pods-SetPR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SetPR.release.xcconfig"; path = "Pods/Target Support Files/Pods-SetPR/Pods-SetPR.release.xcconfig"; sourceTree = "<group>"; };
+		9F34279A1ADD92A9116603FE /* Pods_SetPR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SetPR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D903C71D219271230034C273 /* SetPR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetPR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D903C720219271230034C273 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D903C722219271230034C273 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D903C722219271230034C273 /* ExerciseBankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseBankVC.swift; sourceTree = "<group>"; };
 		D903C725219271230034C273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D903C727219271230034C273 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D903C72A219271230034C273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D903C72C219271230034C273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9274300219A31E0005B2181 /* ProgramOverviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOverviewVC.swift; sourceTree = "<group>"; };
+		D9274302219A33BA005B2181 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D9274304219A3737005B2181 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		D9274306219A3843005B2181 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		D9274308219A399D005B2181 /* SleepPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepPlan.swift; sourceTree = "<group>"; };
+		D927430A219A3CE3005B2181 /* ProgramOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOverviewCell.swift; sourceTree = "<group>"; };
+		D927430B219A3CE3005B2181 /* ProgramOverviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgramOverviewCell.xib; sourceTree = "<group>"; };
+		D927430E219B57EC005B2181 /* ProgramDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDay.swift; sourceTree = "<group>"; };
+		D93D685C219273EB00BF9BE5 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		D93D685E219275A200BF9BE5 /* ExerciseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
+		D93D6862219278F100BF9BE5 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		D93D6864219278FD00BF9BE5 /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
+		D93D686621927C9F00BF9BE5 /* CardioSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardioSet.swift; sourceTree = "<group>"; };
+		D9B108D52197040700AEDC23 /* SelectedProgramVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProgramVC.swift; sourceTree = "<group>"; };
+		D9C16F4D2196448300E2ED0D /* WorkoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutVC.swift; sourceTree = "<group>"; };
+		D9C16F5321966CE500E2ED0D /* WorkoutExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseCell.swift; sourceTree = "<group>"; };
+		D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutExerciseCell.xib; sourceTree = "<group>"; };
+		D9C16F572196FEC300E2ED0D /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
+		D9C16F582196FEC300E2ED0D /* ProgramCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgramCell.xib; sourceTree = "<group>"; };
+		D9FB31DF219370AD00ADAC82 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
+		D9FB31E0219370AD00ADAC82 /* ExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseCell.xib; sourceTree = "<group>"; };
+		D9FB31E32193737300ADAC82 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
+		D9FB31E42193737300ADAC82 /* AddCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCell.xib; sourceTree = "<group>"; };
+		D9FB31EB21946B2B00ADAC82 /* NewExerciseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +81,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23E016C5B62FBCAE01DF142 /* Pods_SetPR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A76E6A035A289F664208004F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B6FD11108894621569C9938 /* Pods-SetPR.debug.xcconfig */,
+				9235B7002206BDB595B835B7 /* Pods-SetPR.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D903C714219271230034C273 = {
 			isa = PBXGroup;
 			children = (
 				D903C71F219271230034C273 /* SetPR */,
 				D903C71E219271230034C273 /* Products */,
+				A76E6A035A289F664208004F /* Pods */,
+				F7AF040E2762275FACB0E80A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +119,85 @@
 			isa = PBXGroup;
 			children = (
 				D903C720219271230034C273 /* AppDelegate.swift */,
-				D903C722219271230034C273 /* ViewController.swift */,
-				D903C724219271230034C273 /* Main.storyboard */,
+				D93D6859219273B200BF9BE5 /* Model */,
+				D93D685A219273BA00BF9BE5 /* Controller */,
+				D93D685B219273C800BF9BE5 /* View */,
 				D903C727219271230034C273 /* Assets.xcassets */,
 				D903C729219271230034C273 /* LaunchScreen.storyboard */,
 				D903C72C219271230034C273 /* Info.plist */,
 			);
 			path = SetPR;
+			sourceTree = "<group>";
+		};
+		D93D6859219273B200BF9BE5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D9274302219A33BA005B2181 /* User.swift */,
+				D93D6864219278FD00BF9BE5 /* Program.swift */,
+				D927430E219B57EC005B2181 /* ProgramDay.swift */,
+				D9274304219A3737005B2181 /* Meal.swift */,
+				D9274308219A399D005B2181 /* SleepPlan.swift */,
+				D9274306219A3843005B2181 /* Food.swift */,
+				D93D6862219278F100BF9BE5 /* Workout.swift */,
+				D93D685C219273EB00BF9BE5 /* Exercise.swift */,
+				D93D686621927C9F00BF9BE5 /* CardioSet.swift */,
+				D93D685E219275A200BF9BE5 /* ExerciseSet.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D93D685A219273BA00BF9BE5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D9274300219A31E0005B2181 /* ProgramOverviewVC.swift */,
+				D9B108D52197040700AEDC23 /* SelectedProgramVC.swift */,
+				D9C16F4D2196448300E2ED0D /* WorkoutVC.swift */,
+				D903C722219271230034C273 /* ExerciseBankVC.swift */,
+				D9FB31EB21946B2B00ADAC82 /* NewExerciseVC.swift */,
+				D9FB31D521934E0400ADAC82 /* Custom Views */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D93D685B219273C800BF9BE5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D903C724219271230034C273 /* Main.storyboard */,
+				D93D68682192812700BF9BE5 /* Custom Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D93D68682192812700BF9BE5 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D927430A219A3CE3005B2181 /* ProgramOverviewCell.swift */,
+				D927430B219A3CE3005B2181 /* ProgramOverviewCell.xib */,
+				D9C16F572196FEC300E2ED0D /* ProgramCell.swift */,
+				D9C16F582196FEC300E2ED0D /* ProgramCell.xib */,
+				D9C16F5321966CE500E2ED0D /* WorkoutExerciseCell.swift */,
+				D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */,
+				D9FB31DF219370AD00ADAC82 /* ExerciseCell.swift */,
+				D9FB31E0219370AD00ADAC82 /* ExerciseCell.xib */,
+				D9FB31E32193737300ADAC82 /* AddCell.swift */,
+				D9FB31E42193737300ADAC82 /* AddCell.xib */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		D9FB31D521934E0400ADAC82 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		F7AF040E2762275FACB0E80A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F34279A1ADD92A9116603FE /* Pods_SetPR.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +207,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D903C72F219271230034C273 /* Build configuration list for PBXNativeTarget "SetPR" */;
 			buildPhases = (
+				C86F83D623C91CD3A9EE2DEE /* [CP] Check Pods Manifest.lock */,
 				D903C719219271230034C273 /* Sources */,
 				D903C71A219271230034C273 /* Frameworks */,
 				D903C71B219271230034C273 /* Resources */,
+				AE8F4D4AC111CD7EBF597E3A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,20 +261,97 @@
 			buildActionMask = 2147483647;
 			files = (
 				D903C72B219271230034C273 /* LaunchScreen.storyboard in Resources */,
+				D9FB31E2219370AD00ADAC82 /* ExerciseCell.xib in Resources */,
 				D903C728219271230034C273 /* Assets.xcassets in Resources */,
+				D9FB31E62193737300ADAC82 /* AddCell.xib in Resources */,
 				D903C726219271230034C273 /* Main.storyboard in Resources */,
+				D9C16F5621966CE500E2ED0D /* WorkoutExerciseCell.xib in Resources */,
+				D9C16F5A2196FEC300E2ED0D /* ProgramCell.xib in Resources */,
+				D927430D219A3CE3005B2181 /* ProgramOverviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AE8F4D4AC111CD7EBF597E3A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SetPR/Pods-SetPR-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/ChartsRealm/ChartsRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChartsRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SetPR/Pods-SetPR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C86F83D623C91CD3A9EE2DEE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SetPR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D903C719219271230034C273 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D903C723219271230034C273 /* ViewController.swift in Sources */,
+				D93D685F219275A200BF9BE5 /* ExerciseSet.swift in Sources */,
+				D903C723219271230034C273 /* ExerciseBankVC.swift in Sources */,
+				D9B108D62197040700AEDC23 /* SelectedProgramVC.swift in Sources */,
 				D903C721219271230034C273 /* AppDelegate.swift in Sources */,
+				D9274303219A33BA005B2181 /* User.swift in Sources */,
+				D9274307219A3843005B2181 /* Food.swift in Sources */,
+				D9274301219A31E0005B2181 /* ProgramOverviewVC.swift in Sources */,
+				D9FB31EC21946B2B00ADAC82 /* NewExerciseVC.swift in Sources */,
+				D9274309219A399D005B2181 /* SleepPlan.swift in Sources */,
+				D9C16F592196FEC300E2ED0D /* ProgramCell.swift in Sources */,
+				D93D6865219278FD00BF9BE5 /* Program.swift in Sources */,
+				D927430C219A3CE3005B2181 /* ProgramOverviewCell.swift in Sources */,
+				D93D685D219273EB00BF9BE5 /* Exercise.swift in Sources */,
+				D9FB31E1219370AD00ADAC82 /* ExerciseCell.swift in Sources */,
+				D9274305219A3737005B2181 /* Meal.swift in Sources */,
+				D9FB31E52193737300ADAC82 /* AddCell.swift in Sources */,
+				D927430F219B57EC005B2181 /* ProgramDay.swift in Sources */,
+				D93D686721927C9F00BF9BE5 /* CardioSet.swift in Sources */,
+				D9C16F4E2196448300E2ED0D /* WorkoutVC.swift in Sources */,
+				D93D6863219278F100BF9BE5 /* Workout.swift in Sources */,
+				D9C16F5521966CE500E2ED0D /* WorkoutExerciseCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +495,7 @@
 		};
 		D903C730219271230034C273 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B6FD11108894621569C9938 /* Pods-SetPR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +513,7 @@
 		};
 		D903C731219271230034C273 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9235B7002206BDB595B835B7 /* Pods-SetPR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
