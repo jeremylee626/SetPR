@@ -12,6 +12,7 @@ import RealmSwift
 
 class Workout: Object {
     // MARK: Properties
+    @objc dynamic var id: String?
     @objc dynamic var name: String?
     @objc dynamic var cycleNumber: Int = 0
     @objc dynamic var dayNumber: Int = 0
@@ -24,4 +25,9 @@ class Workout: Object {
     
     // MARK: Parent Class
     let parentDay = LinkingObjects(fromType: ProgramDay.self, property: "workouts")
+    
+    // MARK: Primary Key
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

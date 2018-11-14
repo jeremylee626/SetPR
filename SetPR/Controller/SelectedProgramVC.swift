@@ -18,6 +18,7 @@ class SelectedProgramVC: UIViewController {
     var days: Results<ProgramDay>?
     var programDict = [Int : Results<ProgramDay>]()
     
+    var selectedWorkout: Workout?
     
     // MARK: - Outlets
     @IBOutlet weak var programTableView: UITableView!
@@ -37,8 +38,6 @@ class SelectedProgramVC: UIViewController {
             }
         }
     }
-    
-    
     
     // MARK: - Functions
     override func viewDidLoad() {
@@ -60,7 +59,6 @@ class SelectedProgramVC: UIViewController {
         
         // Load program days data
         loadProgramDays()
-        
     }
     
     // MARK: - Load/Save data
@@ -89,8 +87,66 @@ class SelectedProgramVC: UIViewController {
     
     
     // MARK: - Navigation
-    @objc func workoutButtonPressed() {
-        performSegue(withIdentifier: "goToWorkoutVC", sender: self)
+    @objc func workoutButtonPressed(_ sender: CustomCellButton) {
+        print("Section: \(sender.section ?? 0), Row: \(sender.row ?? 0)")
+        if let selectedDay = programDict[sender.section! + 1]?[sender.row!] {
+            // Check if selected day does not already have a workout
+            if selectedDay.workouts.count == 0 {
+                // Create alert
+                let alert = UIAlertController(title: "Create New Workout", message: "", preferredStyle: .alert)
+
+                // Workout name text field
+                var nameTextField = UITextField()
+
+                // Create alert action
+                let create = UIAlertAction(title: "Create", style: .default) {(create) in
+                    do {
+                        try self.realm.write {
+                            // Create new workout object
+                            let newWorkout = Workout()
+                            // Set new workout properties
+                            newWorkout.name = nameTextField.text
+                            newWorkout.cycleNumber = sender.section! + 1
+                            newWorkout.dayNumber = sender.row! + 1
+                            
+                            // Set primary key for new workout
+                            newWorkout.id = "\(self.selectedProgram?.name ?? "Error")W\(sender.section! + 1)D\(sender.row! + 1)"
+                            
+                            // Append new workout to selected day's workouts
+                            selectedDay.workouts.append(newWorkout)
+                            
+                            // Add new workout to realm
+                            self.realm.add(newWorkout)
+
+                            // Set selectedWorkout to new workout
+                            self.selectedWorkout = newWorkout
+                        }
+                    } catch {
+                        print("Error creating workout...\(error)")
+                    }
+                }
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alert.addTextField { (alertNameTextField) in
+                    alertNameTextField.placeholder = "Enter new workout name"
+                    nameTextField = alertNameTextField
+                }
+                alert.addAction(create)
+                alert.addAction(cancel)
+                
+                present(alert, animated: true, completion: nil)
+                
+            } else {
+                selectedWorkout = selectedDay.workouts[0]
+            }
+
+            // Go to WorkoutsVC
+            performSegue(withIdentifier: "goToWorkoutVC", sender: self)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! WorkoutVC
+        destinationVC.workout = selectedWorkout
     }
 
 
@@ -117,7 +173,6 @@ extension SelectedProgramVC: UITableViewDelegate, UITableViewDataSource {
         let textSize = CGFloat(20.0)
         title.text = " Week \(section + 1)"
         title.font = UIFont(name: "Rockwell", size: textSize)
-//        title.font = UIFont.boldSystemFont(ofSize: textSize)
         title.frame = CGRect(x: 0, y: topPadding, width: labelWidth, height: 35)
         headerView.addSubview(title)
         
@@ -144,8 +199,10 @@ extension SelectedProgramVC: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row < programWeek.count {
                 // Create program cell
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
-                cell.dayLabel.text = "\(indexPath.row + 1)"
-                cell.workoutButton.addTarget(self, action: #selector(SelectedProgramVC.workoutButtonPressed), for: .touchUpInside)
+                cell.dayLabel.text = "\(programDict[indexPath.section + 1]?[indexPath.row].dayNumber ?? 0)"
+                cell.workoutButton.addTarget(self, action: #selector(SelectedProgramVC.workoutButtonPressed(_:)), for: .touchUpInside)
+                cell.workoutButton.row = indexPath.row
+                cell.workoutButton.section = indexPath.section
                 return cell
             }
         }
@@ -181,3 +238,4 @@ extension SelectedProgramVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+

@@ -18,7 +18,6 @@ class WorkoutVC: UIViewController {
     var workout: Workout?
     var workoutExercises: Results<Exercise>?
     
-    
     // MARK: Outlets
     @IBOutlet weak var workoutNameLabel: UILabel!
     @IBOutlet weak var weekNumberLabel: UILabel!
@@ -31,12 +30,6 @@ class WorkoutVC: UIViewController {
     // MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //TODO: Remove this after creating programVC
-        workout = Workout()
-        workout?.name = "Test Workout 1"
-        workout?.cycleNumber = 1
-        workout?.dayNumber = 1
         
         // Set screen title
         navigationItem.title = workout?.name ?? "Error"
@@ -58,7 +51,9 @@ class WorkoutVC: UIViewController {
         workoutTableView.rowHeight = UITableView.automaticDimension
         workoutTableView.estimatedRowHeight = 70
         
-        
+        // Load exercises
+        loadWorkoutExercises()
+        workoutTableView.reloadData()
         
     }
     
@@ -73,7 +68,11 @@ class WorkoutVC: UIViewController {
     
     // MARK: Load/Save Data
     
-
+    func loadWorkoutExercises() {
+        // Load exercises filtered by parent workout name
+        workoutExercises = realm.objects(Exercise.self).filter("ANY parentWorkout.name == %@", workout!.name!)
+        
+    }
 }
 
 extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
@@ -115,19 +114,17 @@ extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let exercises = workoutExercises {
-            return exercises.count + 1
-        }
-        return 1
+        return (workoutExercises?.count ?? 0) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == workoutExercises?.count ?? 0 {
+        if indexPath.row == workoutExercises?.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! AddCell
             cell.addButton.addTarget(self, action: #selector(WorkoutVC.addButtonPressed), for: .touchUpInside)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutExerciseCel", for: indexPath) as! WorkoutExerciseCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutExerciseCell", for: indexPath) as! WorkoutExerciseCell
+            
             cell.numberLabel.text = "\(indexPath.row + 1)"
             cell.nameLabel.text = workoutExercises?[indexPath.row].name ?? "No exercise name specified..."
 //            cell.numberLabel.layer.cornerRadius = cell.numberLabel.frame.size.width / 2

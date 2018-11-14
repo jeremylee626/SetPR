@@ -22,11 +22,10 @@ class Program: Object {
     
     // MARK: - Child Relationships
     var days = List<ProgramDay>()
-//    var workouts = List<Workout>()
-//    var meals = List<Meal>()
-//    var sleepPlans = List<SleepPlan>()
     
-    // MARK: - Parent Relationships
-//    let parentUser = LinkingObjects(fromType: User.self, property: "programs")
+    // MARK: - Primary key
+    override static func primaryKey() -> String? {
+        return "name"
+    }
     
 }

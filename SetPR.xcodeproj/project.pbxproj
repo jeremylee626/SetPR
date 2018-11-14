@@ -21,6 +21,8 @@
 		D927430C219A3CE3005B2181 /* ProgramOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D927430A219A3CE3005B2181 /* ProgramOverviewCell.swift */; };
 		D927430D219A3CE3005B2181 /* ProgramOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D927430B219A3CE3005B2181 /* ProgramOverviewCell.xib */; };
 		D927430F219B57EC005B2181 /* ProgramDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D927430E219B57EC005B2181 /* ProgramDay.swift */; };
+		D9274311219BA9E6005B2181 /* CustomCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274310219BA9E6005B2181 /* CustomCellButton.swift */; };
+		D93B88FE219CC23B00B16DD8 /* ExerciseSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B88FD219CC23B00B16DD8 /* ExerciseSlot.swift */; };
 		D93D685D219273EB00BF9BE5 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D685C219273EB00BF9BE5 /* Exercise.swift */; };
 		D93D685F219275A200BF9BE5 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D685E219275A200BF9BE5 /* ExerciseSet.swift */; };
 		D93D6863219278F100BF9BE5 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D6862219278F100BF9BE5 /* Workout.swift */; };
@@ -58,6 +60,8 @@
 		D927430A219A3CE3005B2181 /* ProgramOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOverviewCell.swift; sourceTree = "<group>"; };
 		D927430B219A3CE3005B2181 /* ProgramOverviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgramOverviewCell.xib; sourceTree = "<group>"; };
 		D927430E219B57EC005B2181 /* ProgramDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDay.swift; sourceTree = "<group>"; };
+		D9274310219BA9E6005B2181 /* CustomCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellButton.swift; sourceTree = "<group>"; };
+		D93B88FD219CC23B00B16DD8 /* ExerciseSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSlot.swift; sourceTree = "<group>"; };
 		D93D685C219273EB00BF9BE5 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		D93D685E219275A200BF9BE5 /* ExerciseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
 		D93D6862219278F100BF9BE5 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				D9274306219A3843005B2181 /* Food.swift */,
 				D93D6862219278F100BF9BE5 /* Workout.swift */,
 				D93D685C219273EB00BF9BE5 /* Exercise.swift */,
+				D93B88FD219CC23B00B16DD8 /* ExerciseSlot.swift */,
 				D93D686621927C9F00BF9BE5 /* CardioSet.swift */,
 				D93D685E219275A200BF9BE5 /* ExerciseSet.swift */,
 			);
@@ -149,12 +154,12 @@
 		D93D685A219273BA00BF9BE5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D9274310219BA9E6005B2181 /* CustomCellButton.swift */,
 				D9274300219A31E0005B2181 /* ProgramOverviewVC.swift */,
 				D9B108D52197040700AEDC23 /* SelectedProgramVC.swift */,
 				D9C16F4D2196448300E2ED0D /* WorkoutVC.swift */,
 				D903C722219271230034C273 /* ExerciseBankVC.swift */,
 				D9FB31EB21946B2B00ADAC82 /* NewExerciseVC.swift */,
-				D9FB31D521934E0400ADAC82 /* Custom Views */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				D903C724219271230034C273 /* Main.storyboard */,
+				D9FB31D521934E0400ADAC82 /* Custom Views */,
 				D93D68682192812700BF9BE5 /* Custom Cells */,
 			);
 			path = View;
@@ -341,12 +347,14 @@
 				D9FB31EC21946B2B00ADAC82 /* NewExerciseVC.swift in Sources */,
 				D9274309219A399D005B2181 /* SleepPlan.swift in Sources */,
 				D9C16F592196FEC300E2ED0D /* ProgramCell.swift in Sources */,
+				D93B88FE219CC23B00B16DD8 /* ExerciseSlot.swift in Sources */,
 				D93D6865219278FD00BF9BE5 /* Program.swift in Sources */,
 				D927430C219A3CE3005B2181 /* ProgramOverviewCell.swift in Sources */,
 				D93D685D219273EB00BF9BE5 /* Exercise.swift in Sources */,
 				D9FB31E1219370AD00ADAC82 /* ExerciseCell.swift in Sources */,
 				D9274305219A3737005B2181 /* Meal.swift in Sources */,
 				D9FB31E52193737300ADAC82 /* AddCell.swift in Sources */,
+				D9274311219BA9E6005B2181 /* CustomCellButton.swift in Sources */,
 				D927430F219B57EC005B2181 /* ProgramDay.swift in Sources */,
 				D93D686721927C9F00BF9BE5 /* CardioSet.swift in Sources */,
 				D9C16F4E2196448300E2ED0D /* WorkoutVC.swift in Sources */,

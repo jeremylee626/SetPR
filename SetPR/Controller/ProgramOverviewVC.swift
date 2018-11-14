@@ -164,7 +164,7 @@ extension ProgramOverviewVC: UITableViewDelegate, UITableViewDataSource {
         
         // Hide button subview
         let editButton = UIButton()
-        editButton.setTitle("Edit", for: .normal)
+        editButton.setTitle("View", for: .normal)
         editButton.setTitleColor(.white, for: .normal)
         editButton.backgroundColor = #colorLiteral(red: 0.4352941176, green: 0.4431372549, blue: 0.4745098039, alpha: 1)
         editButton.layer.cornerRadius = 10.0
@@ -188,8 +188,8 @@ extension ProgramOverviewVC: UITableViewDelegate, UITableViewDataSource {
         if let loadedPrograms = programs {
             // Set cell labels and add target to activate button
             cell.weeksNoLabel.text = "\(loadedPrograms[indexPath.section].numberOfCycles)"
-            cell.startDateLabel.text = "TBD"
-            cell.endDateLabel.text = "TBD"
+            cell.startDateLabel.text = "--/--/----"
+            cell.endDateLabel.text = "--/--/----"
             cell.activateButton.addTarget(self, action: #selector(ProgramOverviewVC.activateButtonPressed(_:)), for: .touchUpInside)
             
             // Set a tag for activate button

@@ -12,6 +12,7 @@ import RealmSwift
 class ExerciseSet: Object {
     
     // MARK: Properties
+    @objc dynamic var workoutId: String?
     @objc dynamic var number = 1
     @objc dynamic var repsTarget = 0
     @objc dynamic var weightTarget = 0
@@ -20,6 +21,8 @@ class ExerciseSet: Object {
     @objc dynamic var intensity = 0
     @objc dynamic var RPE = 0
     @objc dynamic var type: String?
+    
+    @objc dynamic var isActive = false
     @objc dynamic var isComplete = false
     @objc dynamic var rest = 0
     

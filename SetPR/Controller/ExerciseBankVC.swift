@@ -205,20 +205,19 @@ extension ExerciseBankVC: UITableViewDelegate, UITableViewDataSource {
             do {
                 try realm.write {
                     exercise.isSelected = !exercise.isSelected
+                    // Add exercise to workout exercises if it is selected and not already in workout exercises
+                    if exercise.isSelected && !workoutExercises.contains(exercise) {
+//                        exercise.number = selectedWorkout?.exercises.count ?? 0
+                        workoutExercises.append(exercise)
+                        
+                    // Remove exercise from workout exercises if unselected and existing in workout exercises
+                    } else if !exercise.isSelected && workoutExercises.contains(exercise) {
+                        let index = workoutExercises.index(of: exercise)
+                        workoutExercises.remove(at: index!)
+                    }
                 }
             } catch {
                 print("Unable to change exercise isSelected property")
-            }
-            
-            
-            // Add exercise to workout exercises if it is selected and not already in workout exercises
-            if exercise.isSelected && !workoutExercises.contains(exercise) {
-                workoutExercises.append(exercise)
-            
-            // Remove exercise from workout exercises if unselected and existing in workout exercises
-            } else if !exercise.isSelected && workoutExercises.contains(exercise) {
-                let index = workoutExercises.index(of: exercise)
-                workoutExercises.remove(at: index!)
             }
             
             exerciseTableView.reloadData()

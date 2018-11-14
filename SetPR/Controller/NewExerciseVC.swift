@@ -15,6 +15,7 @@ class NewExerciseVC: UIViewController {
     let realm = try! Realm()
     
     // MARK: Vars
+    var exerciseBank: Workout?
     var types = ["", "Main", "Variation", "Accessory", "Other"]
     var muscles = ["", "Chest", "Back", "Shoulders", "Biceps", "Triceps", "Quads",
                    "Hamstrings", "Calves", "Core", "Fullbody", "Cardio", "Other"]
@@ -107,7 +108,9 @@ class NewExerciseVC: UIViewController {
         view.endEditing(true)
     }
     
-    // MARK: Saving data
+    // MARK: Loading/Saving data
+    
+    
     func saveNewExercise(exercise: Exercise) {
         // Try to write new exercise to realm
         do {

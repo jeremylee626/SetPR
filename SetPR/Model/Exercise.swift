@@ -13,7 +13,6 @@ class Exercise: Object {
     
     // MARK: Properties
     @objc dynamic var muscleGroup: String?
-    @objc dynamic var number = 1
     @objc dynamic var name: String?
     @objc dynamic var equipment: String?
     @objc dynamic var oneRepMax: Int = 0

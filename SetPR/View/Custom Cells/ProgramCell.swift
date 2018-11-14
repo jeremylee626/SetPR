@@ -13,9 +13,9 @@ class ProgramCell: UITableViewCell {
     // MARK: Outlets
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var workoutButton: UIButton!
-    @IBOutlet weak var nutritionButton: UIButton!
-    @IBOutlet weak var sleepButton: UIButton!
+    @IBOutlet weak var workoutButton: CustomCellButton!
+    @IBOutlet weak var nutritionButton: CustomCellButton!
+    @IBOutlet weak var sleepButton: CustomCellButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
