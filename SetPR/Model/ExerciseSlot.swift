@@ -14,8 +14,11 @@ class ExerciseSlot: Object {
     @objc dynamic var number = 1
     @objc dynamic var exercise: Exercise?
     
+    // MARK: - Child relationships
+    var exerciseSets = List<ExerciseSet>()
+    var cardioSets = List<CardioSet>()
+    
     // MARK: - Parent relationship
     let parentWorkout = LinkingObjects(fromType: Workout.self, property: "exerciseSlots")
-    
     
 }

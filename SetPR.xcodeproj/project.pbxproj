@@ -13,6 +13,13 @@
 		D903C726219271230034C273 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D903C724219271230034C273 /* Main.storyboard */; };
 		D903C728219271230034C273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D903C727219271230034C273 /* Assets.xcassets */; };
 		D903C72B219271230034C273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D903C729219271230034C273 /* LaunchScreen.storyboard */; };
+		D92185BB219DF0ED00FE1F53 /* SetsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D92185BA219DF0ED00FE1F53 /* SetsHeaderView.xib */; };
+		D92185BD219DF21A00FE1F53 /* SetsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92185BC219DF21A00FE1F53 /* SetsHeaderView.swift */; };
+		D92185C0219DF2E700FE1F53 /* SetsPlanningCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92185BE219DF2E700FE1F53 /* SetsPlanningCell.swift */; };
+		D92185C1219DF2E700FE1F53 /* SetsPlanningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D92185BF219DF2E700FE1F53 /* SetsPlanningCell.xib */; };
+		D92185C3219ED72A00FE1F53 /* SetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92185C2219ED72A00FE1F53 /* SetsVC.swift */; };
+		D92185C5219F4BEB00FE1F53 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92185C4219F4BEB00FE1F53 /* CustomTextField.swift */; };
+		D92185C7219F560F00FE1F53 /* VCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92185C6219F560F00FE1F53 /* VCExtensions.swift */; };
 		D9274301219A31E0005B2181 /* ProgramOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274300219A31E0005B2181 /* ProgramOverviewVC.swift */; };
 		D9274303219A33BA005B2181 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274302219A33BA005B2181 /* User.swift */; };
 		D9274305219A3737005B2181 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9274304219A3737005B2181 /* Meal.swift */; };
@@ -34,6 +41,8 @@
 		D9C16F5621966CE500E2ED0D /* WorkoutExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */; };
 		D9C16F592196FEC300E2ED0D /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C16F572196FEC300E2ED0D /* ProgramCell.swift */; };
 		D9C16F5A2196FEC300E2ED0D /* ProgramCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C16F582196FEC300E2ED0D /* ProgramCell.xib */; };
+		D9C5CF7B219FA8D2007EDFF6 /* AddItemFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C5CF7A219FA8D2007EDFF6 /* AddItemFooterView.xib */; };
+		D9C5CF7D219FA962007EDFF6 /* AddItemFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C5CF7C219FA962007EDFF6 /* AddItemFooterView.swift */; };
 		D9FB31E1219370AD00ADAC82 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB31DF219370AD00ADAC82 /* ExerciseCell.swift */; };
 		D9FB31E2219370AD00ADAC82 /* ExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB31E0219370AD00ADAC82 /* ExerciseCell.xib */; };
 		D9FB31E52193737300ADAC82 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB31E32193737300ADAC82 /* AddCell.swift */; };
@@ -52,6 +61,13 @@
 		D903C727219271230034C273 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D903C72A219271230034C273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D903C72C219271230034C273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D92185BA219DF0ED00FE1F53 /* SetsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetsHeaderView.xib; sourceTree = "<group>"; };
+		D92185BC219DF21A00FE1F53 /* SetsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsHeaderView.swift; sourceTree = "<group>"; };
+		D92185BE219DF2E700FE1F53 /* SetsPlanningCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsPlanningCell.swift; sourceTree = "<group>"; };
+		D92185BF219DF2E700FE1F53 /* SetsPlanningCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetsPlanningCell.xib; sourceTree = "<group>"; };
+		D92185C2219ED72A00FE1F53 /* SetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsVC.swift; sourceTree = "<group>"; };
+		D92185C4219F4BEB00FE1F53 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		D92185C6219F560F00FE1F53 /* VCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCExtensions.swift; sourceTree = "<group>"; };
 		D9274300219A31E0005B2181 /* ProgramOverviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOverviewVC.swift; sourceTree = "<group>"; };
 		D9274302219A33BA005B2181 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D9274304219A3737005B2181 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -73,6 +89,8 @@
 		D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutExerciseCell.xib; sourceTree = "<group>"; };
 		D9C16F572196FEC300E2ED0D /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		D9C16F582196FEC300E2ED0D /* ProgramCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgramCell.xib; sourceTree = "<group>"; };
+		D9C5CF7A219FA8D2007EDFF6 /* AddItemFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemFooterView.xib; sourceTree = "<group>"; };
+		D9C5CF7C219FA962007EDFF6 /* AddItemFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemFooterView.swift; sourceTree = "<group>"; };
 		D9FB31DF219370AD00ADAC82 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		D9FB31E0219370AD00ADAC82 /* ExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseCell.xib; sourceTree = "<group>"; };
 		D9FB31E32193737300ADAC82 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
@@ -133,6 +151,14 @@
 			path = SetPR;
 			sourceTree = "<group>";
 		};
+		D92185C8219F580E00FE1F53 /* Custom Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D92185C6219F560F00FE1F53 /* VCExtensions.swift */,
+			);
+			path = "Custom Extensions";
+			sourceTree = "<group>";
+		};
 		D93D6859219273B200BF9BE5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,10 +169,10 @@
 				D9274308219A399D005B2181 /* SleepPlan.swift */,
 				D9274306219A3843005B2181 /* Food.swift */,
 				D93D6862219278F100BF9BE5 /* Workout.swift */,
-				D93D685C219273EB00BF9BE5 /* Exercise.swift */,
 				D93B88FD219CC23B00B16DD8 /* ExerciseSlot.swift */,
-				D93D686621927C9F00BF9BE5 /* CardioSet.swift */,
+				D93D685C219273EB00BF9BE5 /* Exercise.swift */,
 				D93D685E219275A200BF9BE5 /* ExerciseSet.swift */,
+				D93D686621927C9F00BF9BE5 /* CardioSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,11 +181,14 @@
 			isa = PBXGroup;
 			children = (
 				D9274310219BA9E6005B2181 /* CustomCellButton.swift */,
+				D92185C4219F4BEB00FE1F53 /* CustomTextField.swift */,
 				D9274300219A31E0005B2181 /* ProgramOverviewVC.swift */,
 				D9B108D52197040700AEDC23 /* SelectedProgramVC.swift */,
 				D9C16F4D2196448300E2ED0D /* WorkoutVC.swift */,
+				D92185C2219ED72A00FE1F53 /* SetsVC.swift */,
 				D903C722219271230034C273 /* ExerciseBankVC.swift */,
 				D9FB31EB21946B2B00ADAC82 /* NewExerciseVC.swift */,
+				D92185C8219F580E00FE1F53 /* Custom Extensions */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +206,8 @@
 		D93D68682192812700BF9BE5 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D92185BE219DF2E700FE1F53 /* SetsPlanningCell.swift */,
+				D92185BF219DF2E700FE1F53 /* SetsPlanningCell.xib */,
 				D927430A219A3CE3005B2181 /* ProgramOverviewCell.swift */,
 				D927430B219A3CE3005B2181 /* ProgramOverviewCell.xib */,
 				D9C16F572196FEC300E2ED0D /* ProgramCell.swift */,
@@ -194,6 +225,10 @@
 		D9FB31D521934E0400ADAC82 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				D92185BA219DF0ED00FE1F53 /* SetsHeaderView.xib */,
+				D92185BC219DF21A00FE1F53 /* SetsHeaderView.swift */,
+				D9C5CF7A219FA8D2007EDFF6 /* AddItemFooterView.xib */,
+				D9C5CF7C219FA962007EDFF6 /* AddItemFooterView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -269,6 +304,9 @@
 				D903C72B219271230034C273 /* LaunchScreen.storyboard in Resources */,
 				D9FB31E2219370AD00ADAC82 /* ExerciseCell.xib in Resources */,
 				D903C728219271230034C273 /* Assets.xcassets in Resources */,
+				D92185C1219DF2E700FE1F53 /* SetsPlanningCell.xib in Resources */,
+				D9C5CF7B219FA8D2007EDFF6 /* AddItemFooterView.xib in Resources */,
+				D92185BB219DF0ED00FE1F53 /* SetsHeaderView.xib in Resources */,
 				D9FB31E62193737300ADAC82 /* AddCell.xib in Resources */,
 				D903C726219271230034C273 /* Main.storyboard in Resources */,
 				D9C16F5621966CE500E2ED0D /* WorkoutExerciseCell.xib in Resources */,
@@ -337,11 +375,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C5CF7D219FA962007EDFF6 /* AddItemFooterView.swift in Sources */,
 				D93D685F219275A200BF9BE5 /* ExerciseSet.swift in Sources */,
 				D903C723219271230034C273 /* ExerciseBankVC.swift in Sources */,
+				D92185BD219DF21A00FE1F53 /* SetsHeaderView.swift in Sources */,
+				D92185C3219ED72A00FE1F53 /* SetsVC.swift in Sources */,
+				D92185C0219DF2E700FE1F53 /* SetsPlanningCell.swift in Sources */,
+				D92185C7219F560F00FE1F53 /* VCExtensions.swift in Sources */,
 				D9B108D62197040700AEDC23 /* SelectedProgramVC.swift in Sources */,
 				D903C721219271230034C273 /* AppDelegate.swift in Sources */,
 				D9274303219A33BA005B2181 /* User.swift in Sources */,
+				D92185C5219F4BEB00FE1F53 /* CustomTextField.swift in Sources */,
 				D9274307219A3843005B2181 /* Food.swift in Sources */,
 				D9274301219A31E0005B2181 /* ProgramOverviewVC.swift in Sources */,
 				D9FB31EC21946B2B00ADAC82 /* NewExerciseVC.swift in Sources */,

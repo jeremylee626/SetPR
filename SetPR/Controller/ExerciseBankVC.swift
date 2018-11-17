@@ -20,6 +20,8 @@ class ExerciseBankVC: UIViewController {
     var muscles = [String]()
     var selectedExerciseType = "All"
     
+    var exercisesToAdd = [Exercise]()
+    
     // From WorkoutVC
     var selectedWorkout: Workout?
     
@@ -27,11 +29,13 @@ class ExerciseBankVC: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var exerciseTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var saveSelectionsButton: UIButton!
     
     // MARK: Actions
     @IBAction func newExerciseButtonPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "goToNewExerciseVC", sender: self)
     }
+    
     
     // MARK: Functions
     override func viewDidLoad() {
@@ -39,6 +43,10 @@ class ExerciseBankVC: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = selectedExerciseType + " Exercises"
+        
+        // Format save selections button
+        saveSelectionsButton.layer.cornerRadius = 10.0
+        
         
         // Set tableView delegate and datasource
         exerciseTableView.delegate = self
@@ -89,32 +97,38 @@ class ExerciseBankVC: UIViewController {
             // Clear contents of muscles
             muscles = [String]()
             
-            // Loop through each exercise in allExercises and append muscleGroup to muscles
+            // Loop through each exercise in allExercises
             for exercise in exercises {
+                // Append muscle to muscles if not already a member
                 if let muscle = exercise.muscleGroup {
-                    muscles.append(muscle)
+                    if !muscles.contains(muscle) {
+                        muscles.append(muscle)
+                    }
                 }
             }
-            // Remove duplicates
-            muscles = Array(Set(muscles)).sorted()
-            
+
             // Fill exerciseByMuscle
             for muscle in muscles {
-                filterByMuscle(muscle: muscle)
+                let filteredExercises = allExercises?.filter("muscleGroup == %@", muscle).sorted(byKeyPath: "name", ascending: true)
+                exercisesByMuscle[muscle] = filteredExercises
             }
             
         }
-        
         // Reload table view
         exerciseTableView.reloadData()
     }
 
-    
-    func filterByMuscle(muscle: String) {
-        // Filter exercises by specified muscleGroup
-        let filteredExercises = allExercises?.filter("muscleGroup == %@", muscle).sorted(byKeyPath: "name", ascending: true)
-        // Add filtered exercises as Results<Exercise> to dictionary with muscle as key
-        exercisesByMuscle[muscle] = filteredExercises
+    func saveExerciseToSlot(exercise: Exercise) {
+        do {
+            try realm.write {
+                let newExerciseSlot = ExerciseSlot()
+                newExerciseSlot.exercise = exercise
+                newExerciseSlot.number = (selectedWorkout?.exerciseSlots.count ?? 0) + 1
+                selectedWorkout?.exerciseSlots.append(newExerciseSlot)
+            }
+        } catch {
+            print("Error creating new exercise slot...\(error)")
+        }
     }
     
 
@@ -124,6 +138,14 @@ class ExerciseBankVC: UIViewController {
     @IBAction func unwindToExerciseBankVC(_ sender: UIStoryboardSegue) {
         loadExercises()
         setExercisesByMuscle()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindToWorkoutVC" {
+            for exercise in exercisesToAdd {
+                saveExerciseToSlot(exercise: exercise)
+            }
+        }
     }
 
 
@@ -188,7 +210,9 @@ extension ExerciseBankVC: UITableViewDelegate, UITableViewDataSource {
                 details += exercise.oneRepMax != 0 ? ", ORM: \(exercise.oneRepMax)\(units)" : ", ORM not entered..."
             }
             cell.detailsLabel.text = details
-            cell.accessoryType = exercise.isSelected ? .checkmark : .none
+            
+            // Add check mark to cell if exericise isSelected property is true
+            cell.accessoryType = exercisesToAdd.contains{$0.name == exercise.name} ? .checkmark : .none
         }
         
         return cell
@@ -198,31 +222,25 @@ extension ExerciseBankVC: UITableViewDelegate, UITableViewDataSource {
         // Reference to section of table view
         let muscle = muscles[indexPath.section]
         
-        // References to row of table view and list of exercises for workout
-        if let exercise = exercisesByMuscle[muscle]?[indexPath.row], let workoutExercises = selectedWorkout?.exercises {
+        // Create constant for exercise at selected row
+        if let exercise = exercisesByMuscle[muscle]?[indexPath.row] {
             
-            // Toggle isSelected property of chosen exercise
-            do {
-                try realm.write {
-                    exercise.isSelected = !exercise.isSelected
-                    // Add exercise to workout exercises if it is selected and not already in workout exercises
-                    if exercise.isSelected && !workoutExercises.contains(exercise) {
-//                        exercise.number = selectedWorkout?.exercises.count ?? 0
-                        workoutExercises.append(exercise)
-                        
-                    // Remove exercise from workout exercises if unselected and existing in workout exercises
-                    } else if !exercise.isSelected && workoutExercises.contains(exercise) {
-                        let index = workoutExercises.index(of: exercise)
-                        workoutExercises.remove(at: index!)
-                    }
-                }
-            } catch {
-                print("Unable to change exercise isSelected property")
+            // If exercise is not in exercises to add, append it to exercises to add
+            if !exercisesToAdd.contains{$0.name == exercise.name}{
+                exercisesToAdd.append(exercise)
+                print("added")
+
+            
+            // Otherwise remove exercise from exercises to add
+            } else {
+                exercisesToAdd.remove(at: exercisesToAdd.firstIndex{$0.name == exercise.name}!)
+                print("removed")
             }
-            
-            exerciseTableView.reloadData()
         }
+        
+        exerciseTableView.reloadData()
     }
+    
 }
 
 extension ExerciseBankVC: UISearchBarDelegate {

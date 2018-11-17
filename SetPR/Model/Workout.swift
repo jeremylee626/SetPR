@@ -20,8 +20,8 @@ class Workout: Object {
     @objc dynamic var dateCompleted: Date?
     @objc dynamic var quality: Int = 3
     
-    // MARK: Subclasses
-    var exercises = List<Exercise>()
+    // MARK: Child relationship
+    var exerciseSlots = List<ExerciseSlot>()
     
     // MARK: Parent Class
     let parentDay = LinkingObjects(fromType: ProgramDay.self, property: "workouts")

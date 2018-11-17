@@ -16,7 +16,8 @@ class WorkoutVC: UIViewController {
     
     // MARK: Variables
     var workout: Workout?
-    var workoutExercises: Results<Exercise>?
+    var workoutExerciseSlots: Results<ExerciseSlot>?
+    var selectedExerciseSlot: ExerciseSlot?
     
     // MARK: Outlets
     @IBOutlet weak var workoutNameLabel: UILabel!
@@ -25,6 +26,8 @@ class WorkoutVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var musclesLabel: UILabel!
     @IBOutlet weak var workoutTableView: UITableView!
+    
+    // MARK: Actions
     
     
     // MARK: Functions
@@ -57,22 +60,45 @@ class WorkoutVC: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ExerciseBankVC
-        destinationVC.selectedWorkout = workout
+    @objc func editButtonPressed() {
+        workoutTableView.isEditing = !workoutTableView.isEditing
     }
     
-    @objc func addButtonPressed() {
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToExerciseBank" {
+            // Pass workout to ExerciseBankVC
+            let destinationVC = segue.destination as! ExerciseBankVC
+            destinationVC.selectedWorkout = workout
+        } else if segue.identifier == "goToSetsVC" {
+            let destinationVC = segue.destination as! SetsVC
+            destinationVC.selectedExerciseSlot = selectedExerciseSlot
+        }
+    }
+    
+    @objc func addButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToExerciseBank", sender: self)
     }
     
-    // MARK: Load/Save Data
+    @IBAction func unwindToWorkoutVC(_ sender: UIStoryboardSegue) {
+        workoutTableView.reloadData()
+    }
     
+    // MARK: Load/Save Data
     func loadWorkoutExercises() {
-        // Load exercises filtered by parent workout name
-        workoutExercises = realm.objects(Exercise.self).filter("ANY parentWorkout.name == %@", workout!.name!)
+        // Load exercise slots filtered by parent workout name sorted by number
+        workoutExerciseSlots = realm.objects(ExerciseSlot.self).filter("ANY parentWorkout.name == %@", workout!.name!).sorted(byKeyPath: "number", ascending: true)
         
     }
+    
+    func reorderSlots(slots: List<ExerciseSlot>) {
+        // Loop through each slot
+        for index in 0..<slots.count {
+            // Set exercise slot number to index plus one
+            slots[index].number = index + 1
+        }
+    }
+    
 }
 
 extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
@@ -103,6 +129,7 @@ extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
         
         let editButton = UIButton()
         editButton.setTitle("Edit", for: .normal)
+        editButton.addTarget(self, action: #selector(WorkoutVC.editButtonPressed), for: .touchUpInside)
         editButton.frame = CGRect(x: 10 + labelWidth, y: topPadding, width: 50, height: 35)
         headerView.addSubview(editButton)
         
@@ -114,24 +141,105 @@ extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (workoutExercises?.count ?? 0) + 1
+        return (workoutExerciseSlots?.count ?? 0) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == workoutExercises?.count {
+        // Check if index path row is equal to count of workoutExerciseSlots
+        if indexPath.row == workoutExerciseSlots?.count {
+            // Create add cell in table view
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! AddCell
-            cell.addButton.addTarget(self, action: #selector(WorkoutVC.addButtonPressed), for: .touchUpInside)
+            
+            // Add target to add button
+            cell.addButton.addTarget(self, action: #selector(WorkoutVC.addButtonPressed(_:)), for: .touchUpInside)
+            
             return cell
+        // Otherwise, if index path row not equal to count of workoutExerciseSlots
         } else {
+            // Create workout exercise cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutExerciseCell", for: indexPath) as! WorkoutExerciseCell
             
-            cell.numberLabel.text = "\(indexPath.row + 1)"
-            cell.nameLabel.text = workoutExercises?[indexPath.row].name ?? "No exercise name specified..."
-//            cell.numberLabel.layer.cornerRadius = cell.numberLabel.frame.size.width / 2
-//            cell.numberLabel.layer.masksToBounds = true
+            // Exercise for current exercise slot
+            let exercise = workoutExerciseSlots?[indexPath.row].exercise
+            
+            // Set number label and name label of cell
+            cell.numberLabel.text = "\(workoutExerciseSlots?[indexPath.row].number ?? 0)"
+            cell.nameLabel.text = exercise?.name ?? "No exercise name specified..."
+            cell.accessoryType = .disclosureIndicator
+            
             return cell
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let exerciseSlots = workoutExerciseSlots {
+            selectedExerciseSlot = exerciseSlots[indexPath.row]
+            performSegue(withIdentifier: "goToSetsVC", sender: self)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == workoutExerciseSlots?.count {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if let slots = workout?.exerciseSlots {
+            do {
+                try realm.write {
+                    // Exercise slot to move
+                    let slotToMove = slots[sourceIndexPath.row]
+                    
+                    // Remove exercise slot
+                    slots.remove(at: sourceIndexPath.row)
+                    
+                    // Reinsert exercise slot at destination index
+                    slots.insert(slotToMove, at: destinationIndexPath.row)
+                    
+                    // Reset exercise slot numbers
+//                    for index in 0..<slots.count {
+//                        slots[index].number = index + 1
+//                    }
+                    reorderSlots(slots: slots)
+                    
+                    workoutTableView.reloadData()
+                    
+                }
+            } catch {
+                print("Error updating exercise order...\(error)")
+            }
+            
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // Check that editing style is delete and selected row is not the add cell
+        if editingStyle == .delete && indexPath.row != workoutExerciseSlots?.count {
+            if let slots = workout?.exerciseSlots {
+                do {
+                    try realm.write {
+                        // Delete exercise sets from selected slot
+                        slots[indexPath.row].exerciseSets.removeAll()
+                        
+                        // Delete slot
+                        slots.remove(at: indexPath.row)
+                    
+                        
+                        // Update slot numbers
+                        reorderSlots(slots: slots)
+                        
+                        workoutTableView.reloadData()
+                    }
+                } catch {
+                    print("Error deleting exercise slot...\(error)")
+                }
+            }
+        }
+    }
 
 }

@@ -12,7 +12,6 @@ import RealmSwift
 class CardioSet: Object {
     
     // MARK: Properties
-    @objc dynamic var workoutId: String?
     @objc dynamic var number = 1
     @objc dynamic var time = 0
     @objc dynamic var distance = 0
@@ -20,5 +19,5 @@ class CardioSet: Object {
     @objc dynamic var isComplete = false
     
     // MARK: Relationships
-    let parentCardioExercise = LinkingObjects(fromType: Exercise.self, property: "cardioSets")
+    let parentExerciseSlot = LinkingObjects(fromType: ExerciseSlot.self, property: "cardioSets")
 }

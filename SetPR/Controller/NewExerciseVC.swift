@@ -60,7 +60,14 @@ class NewExerciseVC: UIViewController {
         navigationController?.view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         
         createPickers()
-        createToolbars()
+//        createToolbars()
+        
+        // Create toolbars in textfields
+        createToolbar(chosenTextField: nameTextField)
+        createToolbar(chosenTextField: typeTextField)
+        createToolbar(chosenTextField: muscleTextField)
+        createToolbar(chosenTextField: equipmentTextField)
+        createToolbar(chosenTextField: ormTextField)
     
     }
     
@@ -85,28 +92,6 @@ class NewExerciseVC: UIViewController {
         
     }
     
-    func createToolbars() {
-        // Create toolbar
-        let toolbar = UIToolbar()
-        toolbar.backgroundColor = .gray
-        toolbar.sizeToFit()
-        
-        // Add done button
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed))
-        toolbar.setItems([flexibleSpace, doneButton, flexibleSpace], animated: false)
-        
-        // Input toolbars in textfields
-        nameTextField.inputAccessoryView = toolbar
-        typeTextField.inputAccessoryView = toolbar
-        muscleTextField.inputAccessoryView = toolbar
-        equipmentTextField.inputAccessoryView = toolbar
-        ormTextField.inputAccessoryView = toolbar
-    }
-    
-    @objc func doneButtonPressed() {
-        view.endEditing(true)
-    }
     
     // MARK: Loading/Saving data
     
