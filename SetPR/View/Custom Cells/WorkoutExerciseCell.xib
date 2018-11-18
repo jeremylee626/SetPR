@@ -20,21 +20,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsc-i8-TCp">
-                        <rect key="frame" x="10" y="10.5" width="50" height="50"/>
+                        <rect key="frame" x="10" y="5.5" width="60" height="60"/>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="79q-v4-mya"/>
-                            <constraint firstAttribute="height" constant="50" id="JiH-dE-Jcq"/>
+                            <constraint firstAttribute="width" constant="60" id="79q-v4-mya"/>
+                            <constraint firstAttribute="height" constant="60" id="JiH-dE-Jcq"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hvy-P8-xic">
-                        <rect key="frame" x="68" y="10" width="242" height="50.5"/>
+                        <rect key="frame" x="78" y="10" width="232" height="50.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3z-ZN-ST1">
-                                <rect key="frame" x="0.0" y="0.0" width="242" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="232" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="0Ns-ar-WRo"/>
                                 </constraints>
@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap row to enter sets..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-1u-36G">
-                                <rect key="frame" x="0.0" y="20" width="242" height="30.5"/>
+                                <rect key="frame" x="0.0" y="20" width="232" height="30.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

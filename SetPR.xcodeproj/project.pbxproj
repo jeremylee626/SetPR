@@ -41,8 +41,8 @@
 		D9C16F5621966CE500E2ED0D /* WorkoutExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */; };
 		D9C16F592196FEC300E2ED0D /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C16F572196FEC300E2ED0D /* ProgramCell.swift */; };
 		D9C16F5A2196FEC300E2ED0D /* ProgramCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C16F582196FEC300E2ED0D /* ProgramCell.xib */; };
-		D9C5CF7B219FA8D2007EDFF6 /* AddItemFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C5CF7A219FA8D2007EDFF6 /* AddItemFooterView.xib */; };
 		D9C5CF7D219FA962007EDFF6 /* AddItemFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C5CF7C219FA962007EDFF6 /* AddItemFooterView.swift */; };
+		D9C5CF7F219FAC7B007EDFF6 /* AddItemFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C5CF7E219FAC7B007EDFF6 /* AddItemFooterView.xib */; };
 		D9FB31E1219370AD00ADAC82 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB31DF219370AD00ADAC82 /* ExerciseCell.swift */; };
 		D9FB31E2219370AD00ADAC82 /* ExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB31E0219370AD00ADAC82 /* ExerciseCell.xib */; };
 		D9FB31E52193737300ADAC82 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB31E32193737300ADAC82 /* AddCell.swift */; };
@@ -89,8 +89,8 @@
 		D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutExerciseCell.xib; sourceTree = "<group>"; };
 		D9C16F572196FEC300E2ED0D /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		D9C16F582196FEC300E2ED0D /* ProgramCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgramCell.xib; sourceTree = "<group>"; };
-		D9C5CF7A219FA8D2007EDFF6 /* AddItemFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemFooterView.xib; sourceTree = "<group>"; };
 		D9C5CF7C219FA962007EDFF6 /* AddItemFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemFooterView.swift; sourceTree = "<group>"; };
+		D9C5CF7E219FAC7B007EDFF6 /* AddItemFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemFooterView.xib; sourceTree = "<group>"; };
 		D9FB31DF219370AD00ADAC82 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		D9FB31E0219370AD00ADAC82 /* ExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseCell.xib; sourceTree = "<group>"; };
 		D9FB31E32193737300ADAC82 /* AddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
@@ -227,8 +227,8 @@
 			children = (
 				D92185BA219DF0ED00FE1F53 /* SetsHeaderView.xib */,
 				D92185BC219DF21A00FE1F53 /* SetsHeaderView.swift */,
-				D9C5CF7A219FA8D2007EDFF6 /* AddItemFooterView.xib */,
 				D9C5CF7C219FA962007EDFF6 /* AddItemFooterView.swift */,
+				D9C5CF7E219FAC7B007EDFF6 /* AddItemFooterView.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -305,7 +305,7 @@
 				D9FB31E2219370AD00ADAC82 /* ExerciseCell.xib in Resources */,
 				D903C728219271230034C273 /* Assets.xcassets in Resources */,
 				D92185C1219DF2E700FE1F53 /* SetsPlanningCell.xib in Resources */,
-				D9C5CF7B219FA8D2007EDFF6 /* AddItemFooterView.xib in Resources */,
+				D9C5CF7F219FAC7B007EDFF6 /* AddItemFooterView.xib in Resources */,
 				D92185BB219DF0ED00FE1F53 /* SetsHeaderView.xib in Resources */,
 				D9FB31E62193737300ADAC82 /* AddCell.xib in Resources */,
 				D903C726219271230034C273 /* Main.storyboard in Resources */,

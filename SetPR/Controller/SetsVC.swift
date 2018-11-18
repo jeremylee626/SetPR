@@ -35,6 +35,7 @@ class SetsVC: UIViewController, UITextFieldDelegate {
         
     }
     @IBAction func reorderButtonPressed(_ sender: UIButton) {
+        setsTableView.isEditing = !setsTableView.isEditing
     }
     
     
@@ -70,11 +71,43 @@ class SetsVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    @objc func addButtonPressed() {
+        do {
+            try realm.write {
+                
+                // Creat new set
+                let newSet = ExerciseSet()
+                
+                // Set number of new set to count of existing sets plus one
+                newSet.number = (sets?.count ?? 0) + 1
+                
+                // Append new set to selected exercise slot
+                selectedExerciseSlot?.exerciseSets.append(newSet)
+                
+                // Reload exercise sets
+                loadExerciseSets()
+            }
+        } catch {
+            print("Error creating new set...\(error)")
+        }
+        
+        
+        let indexPath = IndexPath(row: sets!.count - 1, section: 0)
+        setsTableView.insertRows(at: [indexPath], with: .automatic)
+        
+    }
+    
     // MARK: - Load/Save data
     func loadExerciseSets() {
         if let slot = selectedExerciseSlot {
             // Load exercise sets ordered by number
             sets = slot.exerciseSets.sorted(byKeyPath: "number", ascending: true)
+        }
+    }
+    
+    func reorderSets(sets: List<ExerciseSet>) {
+        for index in 0..<sets.count {
+            sets[index].number = index + 1
         }
     }
     
@@ -151,9 +184,6 @@ extension SetsVC: UITableViewDelegate, UITableViewDataSource {
             headerView.addSubview(setsHeaderView)
             setsHeaderView.frame = CGRect(x: 0, y: 0, width: headerView.frame.size.width, height: headerView.frame.size.height)
             
-            if selectedExerciseSlot?.exercise?.type != "Main" {
-                setsHeaderView.intensityLabel.text = "RPE"
-            }
         }
         
         return headerView
@@ -163,122 +193,129 @@ extension SetsVC: UITableViewDelegate, UITableViewDataSource {
         return 35
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        footerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 45)
+        
+        if let addItemView = Bundle.main.loadNibNamed("AddItemFooterView", owner: self, options: nil)?.first as? AddItemFooterView {
+            
+            footerView.addSubview(addItemView)
+            addItemView.frame = CGRect(x: 0, y: 0, width: footerView.bounds.size.width, height: footerView.bounds.size.height)
+            addItemView.addItemButton.setTitle("+ Add Set", for: .normal)
+            addItemView.addItemButton.addTarget(self, action: #selector(WorkoutVC.addButtonPressed), for: .touchUpInside)
+        }
+        
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 45
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (sets?.count ?? 0) + 1
+        return sets?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // If last row in tableView
-        if indexPath.row == (sets?.count ?? 0) {
-            print("Sets Count: \(sets?.count ?? 0)", "Row: \(indexPath.row)")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SetsCell", for: indexPath) as! SetsPlanningCell
             
-            // Create add cell for adding sets
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! AddCell
-            cell.addButton.setTitle("+ Add Set", for: .normal)
-            cell.addButton.addTarget(self, action: #selector(SetsVC.addButtonPressed(_:)), for: .touchUpInside)
-            return cell
-        
-        // Otherwise create set cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SetsCell", for: indexPath) as! SetsPlanningCell
+        // Set cell's setNumberButton to display set number
+        cell.setNumberButton.setTitle("\(sets?[indexPath.row].number ?? 0)", for: .normal)
             
-            // Set cell's setNumberButton to display set number
-            cell.setNumberButton.setTitle("\(sets?[indexPath.row].number ?? 0)", for: .normal)
-            
-            // Track row of each textfield
-            cell.repsTextField.row = indexPath.row
-            cell.weightTextField.row = indexPath.row
-            cell.intensityTextField.row = indexPath.row
+        // Track row of each textfield
+        cell.repsTextField.row = indexPath.row
+        cell.weightTextField.row = indexPath.row
+        cell.intensityTextField.row = indexPath.row
             
             
-            // Create toolbars in each cell's textfields
-            createToolbar(chosenTextField: cell.repsTextField)
-            createToolbar(chosenTextField: cell.weightTextField)
-            createToolbar(chosenTextField: cell.intensityTextField)
+        // Create toolbars in each cell's textfields
+        createToolbar(chosenTextField: cell.repsTextField)
+        createToolbar(chosenTextField: cell.weightTextField)
+        createToolbar(chosenTextField: cell.intensityTextField)
             
-            // Populate textfields with associated values if they are not 0
-            if let set = sets?[indexPath.row] {
-                if set.repsTarget != 0 {
-                    cell.repsTextField.text = "\(set.repsTarget)"
-                }
-                
-                if set.weightTarget != 0 {
-                    cell.weightTextField.text = "\(set.weightTarget)"
-                }
-                
-                if set.intensityTarget != 0.0 {
-                    cell.intensityTextField.text = "\(Int(set.intensityTarget * 100))"
-                }
+        // Populate textfields with associated values if they are not 0
+        if let set = sets?[indexPath.row] {
+            if set.repsTarget != 0 {
+                cell.repsTextField.text = "\(set.repsTarget)"
+            } else {
+                cell.repsTextField.text = ""
             }
-            
-            // Set textfield delegates
-            cell.repsTextField.delegate = self
-            cell.weightTextField.delegate = self
-            cell.intensityTextField.delegate = self
-            
-            if selectedExerciseSlot?.exercise?.type != "Main" {
-                cell.intensityTextField.text = "N/A"
-                cell.intensityTextField.isEnabled = false
+                
+            if set.weightTarget != 0 {
+                cell.weightTextField.text = "\(set.weightTarget)"
+            } else {
+                cell.weightTextField.text = ""
             }
-            
-            
-            return cell
-            
+                
+            if set.intensityTarget != 0.0 {
+                cell.intensityTextField.text = "\(Int(set.intensityTarget * 100))"
+            } else {
+                cell.intensityTextField.text = ""
+            }
         }
+            
+        // Set textfield delegates
+        cell.repsTextField.delegate = self
+        cell.weightTextField.delegate = self
+        cell.intensityTextField.delegate = self
+            
+        if selectedExerciseSlot?.exercise?.type != "Main" {
+            cell.intensityTextField.text = "N/A"
+            cell.intensityTextField.isEnabled = false
+        }
+            
+            
+        return cell
+        
     }
     
-    @objc func addButtonPressed(_ sender: UIButton) {
-        do {
-            try realm.write {
-                
-                // Creat new set
-                let newSet = ExerciseSet()
-                
-                // Set number of new set to count of existing sets plus one
-                newSet.number = (sets?.count ?? 0) + 1
-                
-                // Append new set to selected exercise slot
-                selectedExerciseSlot?.exerciseSets.append(newSet)
-                
-                // Reload exercise sets
-                loadExerciseSets()
-            }
-        } catch {
-            print("Error creating new set...\(error)")
-        }
-        
-        
-        let indexPath = IndexPath(row: sets!.count - 1, section: 0)
-        setsTableView.insertRows(at: [indexPath], with: .automatic)
-        
-    }
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print(indexPath.row)
+            if let selectedSets = selectedExerciseSlot?.exerciseSets {
+                do {
+                    try realm.write {
+                        // Delete selected set from list of exercise sets
+//                        selectedSets.remove(at: indexPath.row)
+                        realm.delete(selectedSets[indexPath.row])
+
+                        // Reload exercise sets
+                        loadExerciseSets()
+
+                        // Renumber existing sets
+                        reorderSets(sets: selectedSets)
+                        
+                        // Reload table view
+                        setsTableView.reloadData()
+                    }
+                } catch {
+                    print("Error removing exercise set...\(error)")
+                }
+            
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if let selectedSets = selectedExerciseSlot?.exerciseSets {
             do {
                 try realm.write {
-                    // Delete selected set from list of exercise sets
-                    selectedExerciseSlot?.exerciseSets.remove(at: indexPath.row)
-
-                    // Reload exercise sets
-                    loadExerciseSets()
-
-                    // Renumber existing sets
-                    if let sets = sets {
-                        for index in 0..<sets.count {
-                            sets[index].number = index + 1
-                        }
+                    if let selectedSet = selectedExerciseSlot?.exerciseSets[sourceIndexPath.row] {
+                        selectedExerciseSlot?.exerciseSets.remove(at: sourceIndexPath.row)
+                        selectedExerciseSlot?.exerciseSets.insert(selectedSet, at: destinationIndexPath.row)
+                        reorderSets(sets: selectedSets)
                     }
-                    
-                    // Reload table view
-                    setsTableView.reloadData()
+                setsTableView.reloadData()
                 }
             } catch {
-                print("Error removing exercise set...\(error)")
+                print("Error reordering exercise sets...\(error)")
             }
-            
         }
     }
 }

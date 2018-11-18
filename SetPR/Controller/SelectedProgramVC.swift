@@ -189,30 +189,41 @@ extension SelectedProgramVC: UITableViewDelegate, UITableViewDataSource {
         return 45
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        footerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 45)
+        
+        if let addItemView = Bundle.main.loadNibNamed("AddItemFooterView", owner: self, options: nil)?.first as? AddItemFooterView {
+            
+            footerView.addSubview(addItemView)
+            addItemView.frame = CGRect(x: 0, y: 0, width: footerView.bounds.size.width, height: footerView.bounds.size.height)
+            addItemView.addItemButton.setTitle("+ Add Day", for: .normal)
+            addItemView.addItemButton.tag = section + 1
+            addItemView.addItemButton.addTarget(self, action: #selector(SelectedProgramVC.addDayButtonPressed(_:)), for: .touchUpInside)
+        }
+        
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 45
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (programDict[section + 1]?.count ?? 0) + 1
+        return programDict[section + 1]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let programWeek = programDict[indexPath.section + 1] {
-            // Check that row is not last row in section
-            if indexPath.row < programWeek.count {
-                // Create program cell
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
-                cell.dayLabel.text = "\(programDict[indexPath.section + 1]?[indexPath.row].dayNumber ?? 0)"
-                cell.workoutButton.addTarget(self, action: #selector(SelectedProgramVC.workoutButtonPressed(_:)), for: .touchUpInside)
-                cell.workoutButton.row = indexPath.row
-                cell.workoutButton.section = indexPath.section
-                return cell
-            }
-        }
-        
-        // Otherwise create add cell
-        let addCell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! AddCell
-        addCell.addButton.setTitle("+ Add Day", for: .normal)
-        addCell.addButton.tag = indexPath.section + 1
-        addCell.addButton.addTarget(self, action: #selector(SelectedProgramVC.addDayButtonPressed(_:)), for: .touchUpInside)
-        return addCell
+        // Create program cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
+        cell.dayLabel.text = "\(programDict[indexPath.section + 1]?[indexPath.row].dayNumber ?? 0)"
+        cell.workoutButton.addTarget(self, action: #selector(SelectedProgramVC.workoutButtonPressed(_:)), for: .touchUpInside)
+        cell.workoutButton.row = indexPath.row
+        cell.workoutButton.section = indexPath.section
+
+        return cell
     }
     
     @objc func addDayButtonPressed(_ sender: UIButton) {
