@@ -17,11 +17,13 @@ class Workout: Object {
     @objc dynamic var cycleNumber: Int = 0
     @objc dynamic var dayNumber: Int = 0
     @objc dynamic var isComplete = false
+    @objc dynamic var isActive = false
     @objc dynamic var dateCompleted: Date?
     @objc dynamic var quality: Int = 3
     
     // MARK: Child relationship
     var exerciseSlots = List<ExerciseSlot>()
+    var muscles = List<String>()
     
     // MARK: Parent Class
     let parentDay = LinkingObjects(fromType: ProgramDay.self, property: "workouts")

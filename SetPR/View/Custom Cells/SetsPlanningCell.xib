@@ -83,7 +83,8 @@
                                     <constraint firstAttribute="width" secondItem="Gfn-7v-mf3" secondAttribute="height" id="gKz-T7-ef5"/>
                                     <constraint firstAttribute="height" constant="50" id="lKH-8x-f4w"/>
                                 </constraints>
-                                <state key="normal" title="WU1">
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
+                                <state key="normal" title="Finish">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>

@@ -46,7 +46,7 @@ class SetsVC: UIViewController, UITextFieldDelegate {
         
         // Configure title
         if let exercise = selectedExerciseSlot?.exercise {
-            exerciseNameLabel.text = exercise.name
+            exerciseNameLabel.text = "\(selectedExerciseSlot?.number ?? 0). \(exercise.name ?? "No name...")"
             exerciseTypeLabel.text = exercise.type
             exerciseEquipLabel.text = exercise.equipment
             ormLabel.text = exercise.oneRepMax != 0 ? "\(exercise.oneRepMax)\(units)" : "None"
@@ -64,7 +64,6 @@ class SetsVC: UIViewController, UITextFieldDelegate {
         
         // Register custom table view cells
         setsTableView.register(UINib(nibName: "SetsPlanningCell", bundle: nil), forCellReuseIdentifier: "SetsCell")
-        setsTableView.register(UINib(nibName: "AddCell", bundle: nil), forCellReuseIdentifier: "AddCell")
         
         // Load exerciseSets if they already exist
         loadExerciseSets()

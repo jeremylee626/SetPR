@@ -35,7 +35,10 @@
 		D93D6863219278F100BF9BE5 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D6862219278F100BF9BE5 /* Workout.swift */; };
 		D93D6865219278FD00BF9BE5 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D6864219278FD00BF9BE5 /* Program.swift */; };
 		D93D686721927C9F00BF9BE5 /* CardioSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D686621927C9F00BF9BE5 /* CardioSet.swift */; };
+		D982697821A2EB4E000DCC32 /* ActiveSetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D982697621A2EB4E000DCC32 /* ActiveSetsCell.swift */; };
+		D982697921A2EB4E000DCC32 /* ActiveSetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D982697721A2EB4E000DCC32 /* ActiveSetsCell.xib */; };
 		D9B108D62197040700AEDC23 /* SelectedProgramVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B108D52197040700AEDC23 /* SelectedProgramVC.swift */; };
+		D9BEC81121A2E0F100ABD8B9 /* ActiveSetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BEC81021A2E0F100ABD8B9 /* ActiveSetsVC.swift */; };
 		D9C16F4E2196448300E2ED0D /* WorkoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C16F4D2196448300E2ED0D /* WorkoutVC.swift */; };
 		D9C16F5521966CE500E2ED0D /* WorkoutExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C16F5321966CE500E2ED0D /* WorkoutExerciseCell.swift */; };
 		D9C16F5621966CE500E2ED0D /* WorkoutExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */; };
@@ -83,7 +86,10 @@
 		D93D6862219278F100BF9BE5 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		D93D6864219278FD00BF9BE5 /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		D93D686621927C9F00BF9BE5 /* CardioSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardioSet.swift; sourceTree = "<group>"; };
+		D982697621A2EB4E000DCC32 /* ActiveSetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSetsCell.swift; sourceTree = "<group>"; };
+		D982697721A2EB4E000DCC32 /* ActiveSetsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveSetsCell.xib; sourceTree = "<group>"; };
 		D9B108D52197040700AEDC23 /* SelectedProgramVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProgramVC.swift; sourceTree = "<group>"; };
+		D9BEC81021A2E0F100ABD8B9 /* ActiveSetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSetsVC.swift; sourceTree = "<group>"; };
 		D9C16F4D2196448300E2ED0D /* WorkoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutVC.swift; sourceTree = "<group>"; };
 		D9C16F5321966CE500E2ED0D /* WorkoutExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseCell.swift; sourceTree = "<group>"; };
 		D9C16F5421966CE500E2ED0D /* WorkoutExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutExerciseCell.xib; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 				D9B108D52197040700AEDC23 /* SelectedProgramVC.swift */,
 				D9C16F4D2196448300E2ED0D /* WorkoutVC.swift */,
 				D92185C2219ED72A00FE1F53 /* SetsVC.swift */,
+				D9BEC81021A2E0F100ABD8B9 /* ActiveSetsVC.swift */,
 				D903C722219271230034C273 /* ExerciseBankVC.swift */,
 				D9FB31EB21946B2B00ADAC82 /* NewExerciseVC.swift */,
 				D92185C8219F580E00FE1F53 /* Custom Extensions */,
@@ -208,6 +215,8 @@
 			children = (
 				D92185BE219DF2E700FE1F53 /* SetsPlanningCell.swift */,
 				D92185BF219DF2E700FE1F53 /* SetsPlanningCell.xib */,
+				D982697621A2EB4E000DCC32 /* ActiveSetsCell.swift */,
+				D982697721A2EB4E000DCC32 /* ActiveSetsCell.xib */,
 				D927430A219A3CE3005B2181 /* ProgramOverviewCell.swift */,
 				D927430B219A3CE3005B2181 /* ProgramOverviewCell.xib */,
 				D9C16F572196FEC300E2ED0D /* ProgramCell.swift */,
@@ -307,6 +316,7 @@
 				D92185C1219DF2E700FE1F53 /* SetsPlanningCell.xib in Resources */,
 				D9C5CF7F219FAC7B007EDFF6 /* AddItemFooterView.xib in Resources */,
 				D92185BB219DF0ED00FE1F53 /* SetsHeaderView.xib in Resources */,
+				D982697921A2EB4E000DCC32 /* ActiveSetsCell.xib in Resources */,
 				D9FB31E62193737300ADAC82 /* AddCell.xib in Resources */,
 				D903C726219271230034C273 /* Main.storyboard in Resources */,
 				D9C16F5621966CE500E2ED0D /* WorkoutExerciseCell.xib in Resources */,
@@ -376,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9C5CF7D219FA962007EDFF6 /* AddItemFooterView.swift in Sources */,
+				D9BEC81121A2E0F100ABD8B9 /* ActiveSetsVC.swift in Sources */,
 				D93D685F219275A200BF9BE5 /* ExerciseSet.swift in Sources */,
 				D903C723219271230034C273 /* ExerciseBankVC.swift in Sources */,
 				D92185BD219DF21A00FE1F53 /* SetsHeaderView.swift in Sources */,
@@ -391,6 +402,7 @@
 				D9FB31EC21946B2B00ADAC82 /* NewExerciseVC.swift in Sources */,
 				D9274309219A399D005B2181 /* SleepPlan.swift in Sources */,
 				D9C16F592196FEC300E2ED0D /* ProgramCell.swift in Sources */,
+				D982697821A2EB4E000DCC32 /* ActiveSetsCell.swift in Sources */,
 				D93B88FE219CC23B00B16DD8 /* ExerciseSlot.swift in Sources */,
 				D93D6865219278FD00BF9BE5 /* Program.swift in Sources */,
 				D927430C219A3CE3005B2181 /* ProgramOverviewCell.swift in Sources */,

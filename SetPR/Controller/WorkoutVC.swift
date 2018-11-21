@@ -22,14 +22,36 @@ class WorkoutVC: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var workoutNameLabel: UILabel!
-    @IBOutlet weak var weekNumberLabel: UILabel!
-    @IBOutlet weak var dayNumberLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var musclesLabel: UILabel!
     @IBOutlet weak var workoutTableView: UITableView!
     @IBOutlet weak var startWorkoutButton: UIButton!
     
     // MARK: Actions
+    @IBAction func startWorkoutButtonPressed(_ sender: UIButton) {
+        let startDate = Date()
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "E, d MMM yyyy"
+        dateLabel.text = dateFormatterGet.string(from: startDate)
+        
+        do {
+            try  realm.write {
+                if let workout = workout {
+                    workout.isActive = !workout.isActive
+                    setupStartWorkoutButton()
+                }
+                
+                if let firstSlot = workoutExerciseSlots?.first {
+                    firstSlot.isActive = !firstSlot.isActive
+                }
+                workoutTableView.reloadData()
+            }
+            
+        } catch {
+            print("Error starting workout...\(error)")
+        }
+        
+    }
     
     
     // MARK: Functions
@@ -37,17 +59,17 @@ class WorkoutVC: UIViewController {
         super.viewDidLoad()
         
         // Set screen title
-        navigationItem.title = workout?.name ?? "Error"
+        navigationItem.title = "Week \(workout?.cycleNumber ?? 0), Day \(workout?.dayNumber ?? 0)"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         // Configure start workout button
         startWorkoutButton.layer.cornerRadius = startWorkoutButton.bounds.size.width / 2
         startWorkoutButton.layer.masksToBounds = true
+        startWorkoutButton.layer.borderWidth = 2.0
+        setupStartWorkoutButton()
         
         // Set info labels
         workoutNameLabel.text = workout?.name
-        weekNumberLabel.text = "\(workout?.cycleNumber ?? 0)"
-        dayNumberLabel.text = "\(workout?.dayNumber ?? 0)"
         
         
         // Set table view delegate and data source
@@ -66,6 +88,31 @@ class WorkoutVC: UIViewController {
         
     }
     
+    func updateMusclesLabel() {
+        if let muscles = workout?.muscles {
+            let affectedMuscles = Array(Set(muscles))
+            var labelString = ""
+            for i in 0..<affectedMuscles.count {
+                labelString += i < affectedMuscles.count - 1 ? affectedMuscles[i] + ", " : affectedMuscles[i]
+            }
+            
+            musclesLabel.text = labelString
+        }
+    }
+    
+    func setupStartWorkoutButton() {
+        if let workout = workout {
+            if workout.isActive {
+                startWorkoutButton.setTitle("Finish", for: .normal)
+                startWorkoutButton.backgroundColor = #colorLiteral(red: 1, green: 0.4182741796, blue: 0.4273440738, alpha: 1)
+                startWorkoutButton.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            } else {
+                startWorkoutButton.setTitle("Start", for: .normal)
+                startWorkoutButton.backgroundColor = #colorLiteral(red: 0.5692999382, green: 1, blue: 0.6264482415, alpha: 1)
+                startWorkoutButton.layer.borderColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+            }
+        }
+    }
     @objc func editButtonPressed() {
         workoutTableView.isEditing = !workoutTableView.isEditing
     }
@@ -79,6 +126,10 @@ class WorkoutVC: UIViewController {
         } else if segue.identifier == "goToSetsVC" {
             let destinationVC = segue.destination as! SetsVC
             destinationVC.selectedExerciseSlot = selectedExerciseSlot
+        } else if segue.identifier == "goToActiveSetsVC" {
+            let destinationVC = segue.destination as! ActiveSetsVC
+            destinationVC.selectedExerciseSlot = selectedExerciseSlot
+            destinationVC.workout = workout
         }
     }
     
@@ -86,8 +137,16 @@ class WorkoutVC: UIViewController {
         performSegue(withIdentifier: "goToExerciseBank", sender: self)
     }
     
+    @objc func beginSets(_ sender: UIButton) {
+        selectedExerciseSlot = workoutExerciseSlots?[sender.tag]
+        if selectedExerciseSlot?.isActive == true {
+            performSegue(withIdentifier: "goToActiveSetsVC", sender: self)
+        }
+    }
+    
     @IBAction func unwindToWorkoutVC(_ sender: UIStoryboardSegue) {
         workoutTableView.reloadData()
+        updateMusclesLabel()
     }
     
     // MARK: Load/Save Data
@@ -95,6 +154,7 @@ class WorkoutVC: UIViewController {
         // Load exercise slots filtered by parent workout name sorted by number
         workoutExerciseSlots = realm.objects(ExerciseSlot.self).filter("ANY parentWorkout.name == %@", workout!.name!).sorted(byKeyPath: "number", ascending: true)
         
+        updateMusclesLabel()
     }
     
     func reorderSlots(slots: List<ExerciseSlot>) {
@@ -114,7 +174,7 @@ extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        headerView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         headerView.layer.borderWidth = 1
         headerView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
@@ -127,14 +187,15 @@ extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
         let title = UILabel()
         let textSize = CGFloat(20.0)
         title.text = " Exercises"
-        title.font = UIFont(name: "Rockwell", size: textSize)
-        title.font = UIFont.boldSystemFont(ofSize: textSize)
+        title.font = UIFont(name: "American Typewriter", size: textSize)
         title.frame = CGRect(x: 0, y: topPadding, width: labelWidth, height: 35)
         headerView.addSubview(title)
         
         
         let editButton = UIButton()
         editButton.setTitle("Edit", for: .normal)
+        editButton.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        editButton.layer.cornerRadius = 5.0
         editButton.addTarget(self, action: #selector(WorkoutVC.editButtonPressed), for: .touchUpInside)
         editButton.frame = CGRect(x: 10 + labelWidth, y: topPadding, width: 50, height: 35)
         headerView.addSubview(editButton)
@@ -178,8 +239,20 @@ extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
         // Exercise for current exercise slot
         let exerciseSlot = workoutExerciseSlots?[indexPath.row]
             
-        // Set number label and name label of cell
-        cell.numberLabel.text = "\(workoutExerciseSlots?[indexPath.row].number ?? 0)"
+        // Set number button label
+        if exerciseSlot?.isActive == true {
+            cell.numberButton.setTitle("Begin", for: .normal)
+            cell.numberButton.backgroundColor = #colorLiteral(red: 0.4787004452, green: 1, blue: 0.1358468484, alpha: 1)
+            cell.numberButton.tag = indexPath.row
+            cell.numberButton.addTarget(self, action: #selector(self.beginSets(_:)), for: .touchUpInside)
+            
+        } else {
+            cell.numberButton.setTitle("\(workoutExerciseSlots?[indexPath.row].number ?? 0)", for: .normal)
+            cell.numberButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            
+        }
+        
+        // Set name label
         cell.nameLabel.text = exerciseSlot?.exercise?.name ?? "No exercise name specified..."
         
         if let sets = exerciseSlot?.exerciseSets {
@@ -195,6 +268,8 @@ extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.setsLabel?.numberOfLines = sets.count
                 cell.setsLabel?.text = setDetails
+            } else {
+                cell.setsLabel?.text = "Tap row to enter sets..."
             }
         }
         
@@ -249,16 +324,31 @@ extension WorkoutVC: UITableViewDelegate, UITableViewDataSource {
                 do {
                     try realm.write {
                         // Delete exercise sets from selected slot
-                        slots[indexPath.row].exerciseSets.removeAll()
+                        realm.delete(slots[indexPath.row].exerciseSets)
+//                        slots[indexPath.row].exerciseSets.removeAll()
+                        
+                        
+                        // Delete exercise muscle from workout muscles
+                        if let muscleToDelete = slots[indexPath.row].exercise?.muscleGroup {
+                            if let muscleIndex = workout?.muscles.index(of: muscleToDelete) {
+                                workout?.muscles.remove(at: muscleIndex)
+                            }
+                        }
                         
                         // Delete slot
-                        slots.remove(at: indexPath.row)
-                    
+                        realm.delete(slots[indexPath.row])
+//                        slots.remove(at: indexPath.row)
+                        
+                        
                         
                         // Update slot numbers
                         reorderSlots(slots: slots)
                         
+                        // Reload table view
                         workoutTableView.reloadData()
+                        
+                        // Reload muscles label
+                        updateMusclesLabel()
                     }
                 } catch {
                     print("Error deleting exercise slot...\(error)")

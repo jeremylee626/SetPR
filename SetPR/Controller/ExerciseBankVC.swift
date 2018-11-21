@@ -121,10 +121,16 @@ class ExerciseBankVC: UIViewController {
     func saveExerciseToSlot(exercise: Exercise) {
         do {
             try realm.write {
+                // Create new exercise slot object
                 let newExerciseSlot = ExerciseSlot()
                 newExerciseSlot.exercise = exercise
                 newExerciseSlot.number = (selectedWorkout?.exerciseSlots.count ?? 0) + 1
                 selectedWorkout?.exerciseSlots.append(newExerciseSlot)
+                
+                // Append exercise muscle group to list of workout muscles
+                if let muscle = exercise.muscleGroup {
+                    selectedWorkout?.muscles.append(muscle)
+                }
             }
         } catch {
             print("Error creating new exercise slot...\(error)")

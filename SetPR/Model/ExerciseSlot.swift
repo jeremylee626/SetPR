@@ -13,6 +13,8 @@ class ExerciseSlot: Object {
     // MARK: - Properties
     @objc dynamic var number = 1
     @objc dynamic var exercise: Exercise?
+    @objc dynamic var isActive = false
+    
     
     // MARK: - Child relationships
     var exerciseSets = List<ExerciseSet>()
